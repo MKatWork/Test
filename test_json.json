@@ -43,12 +43,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"first_name\": \"Performance\",\n  \"last_name\": \"Testing\",\n  \"phone_no\": \"156677825\",\n  \"email\": \"performance_09@test.com\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"1234567890\",\n  \"t_n_c_accepted\": \"1\"\n}"
+					"raw": "{\n  \"first_name\": \"Performance\",\n  \"last_name\": \"Testing\",\n  \"phone_no\": \"556677825\",\n  \"email\": \"performance_09@test.com\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"1234567890\",\n  \"t_n_c_accepted\": \"1\"\n}"
 				},
 				"url": {
-					"raw": "{{startPoint}}/vendor_signup",
+					"raw": "https://uat-api.cafu.app/vendor_signup",
+					"protocol": "https",
 					"host": [
-						"{{startPoint}}"
+						"uat-api",
+						"cafu",
+						"app"
 					],
 					"path": [
 						"vendor_signup"
@@ -102,9 +105,12 @@
 					"raw": "{\n\"phone_no\":\"{{phone_no}}\",\n\"country_code\":\"+971\",\n\"password\":\"test1234\",\n\"app_version\":\"{{app_versioncode}}\",\n\"app_device_type\":\"{{app_device_type}}\",\n\"device_token\":\"{{app_access_token}}\"\n}"
 				},
 				"url": {
-					"raw": "{{startPoint}}/vendor_login?",
+					"raw": "https://uat-api.cafu.app/vendor_login?",
+					"protocol": "https",
 					"host": [
-						"{{startPoint}}"
+						"uat-api",
+						"cafu",
+						"app"
 					],
 					"path": [
 						"vendor_login"
