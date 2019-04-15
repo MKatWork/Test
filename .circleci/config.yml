@@ -2,15 +2,44 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
-
+      # using custom image, see .circleci/images/primary/Dockerfile
+      - image: circleci/node
+      
+    working_directory: ~/repo
+    
     steps:
       - checkout
-
+      -run: mkdir ~/results
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: NPM Ignore
+          command: 'sudo npm i -g npmignore'
+      # This should go into custom primary image, here's only for the sake of explanation
       - run:
-          name: Print the Current Time
-          command: date
+          name: Install Newman
+          command: 'sudo npm install -g newman'
+          #HTML Report
+      - run:
+          name: Install html
+          command: 'sudo npm install -g newman-reporter-html'    
+          
+      - run:
+          name: Install htmlfull
+          command: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run:
+          name: Install htmlextra
+          command: 'sudo npm install -g newman-reporter-htmlextra'          
+       
+      - run:
+          name: Working Dir
+          command: 'ls -la'
+
+      # This should go into custom primary image, here's only for the sake of explanation
+      - run:
+          name: API Testing for Smoke Suite
+          command: 'newman run ./test_json.json -r cli,htmlextra'
+          #command: 'newman run /home/circleci/repo/collection.json --environment /home/circleci/repo/env.json'
+    
+      - store_test_results:
+         path: ~/results
+      - store_artifacts:
+         path: ~/results

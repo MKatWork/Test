@@ -6,61 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "vendor_signup",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "d53c9790-23f2-45b7-8b38-e62a3acef005",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.globals.set(\"app_access_token\",jsonData.data.app_access_token);",
-							"pm.globals.set(\"email\",jsonData.data.vendor_details.email);",
-							"pm.globals.set(\"app_versioncode\",jsonData.data.vendor_details.app_versioncode);",
-							"pm.globals.set(\"phone_no\",jsonData.data.vendor_details.phone_no);",
-							"pm.globals.set(\"app_device_type\",jsonData.data.app_version.app_device_type);",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"first_name\": \"Performance\",\n  \"last_name\": \"Testing\",\n  \"phone_no\": \"556677825\",\n  \"email\": \"performance_09@test.com\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"1234567890\",\n  \"t_n_c_accepted\": \"1\"\n}"
-				},
-				"url": {
-					"raw": "https://uat-api.cafu.app/vendor_signup",
-					"protocol": "https",
-					"host": [
-						"uat-api",
-						"cafu",
-						"app"
-					],
-					"path": [
-						"vendor_signup"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Login Vendor",
 			"event": [
 				{
@@ -74,7 +19,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"    pm.expect(pm.response.text()).to.include(\"successfully\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -102,7 +47,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"phone_no\":\"{{phone_no}}\",\n\"country_code\":\"+971\",\n\"password\":\"test1234\",\n\"app_version\":\"{{app_versioncode}}\",\n\"app_device_type\":\"{{app_device_type}}\",\n\"device_token\":\"{{app_access_token}}\"\n}"
+					"raw": "{\n\"phone_no\":\"551111121\",\n\"country_code\":\"+971\",\n\"password\":\"test1234\",\n\"app_version\":\"100\",\n\"app_device_type\":\"2\",\n\"device_token\":\"1234567890\"\n}"
 				},
 				"url": {
 					"raw": "https://uat-api.cafu.app/vendor_login?",
