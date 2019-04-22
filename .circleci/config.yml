@@ -8,19 +8,16 @@ jobs:
 
     steps:
       - checkout
-      - run: 'sudo npm i -g npmignore'
-      
-      - run: 'sudo npm install -g newman'
-        #HTML Report
-      - run: 'sudo npm install -g newman-reporter-html'    
-          
-      - run: 'sudo npm install -g newman-reporter-htmlfull'        
-      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
-      - run: 'ls -la'
+      - run: <sudo npm i -g npmignore>
+      - run: <sudo npm install -g newman>
+      - run: <sudo npm install -g newman-reporter-html>
+      - run: <sudo npm install -g newman-reporter-htmlfull>       
+      - run: <sudo npm install -g newman-reporter-htmlextra>                 
+      - run: <ls -la>
 
       # This should go into custom primary image, here's only for the sake of explanation
       #API Testing TC 1
-      - run: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - run: <newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/>
    
          # Save artifacts
       - store_artifacts:
@@ -34,10 +31,8 @@ jobs:
     steps:
       - checkout
       - run: 'sudo npm i -g npmignore'
-            - run: 'sudo npm install -g newman'
-        #HTML Report
-      - run: 'sudo npm install -g newman-reporter-html'    
-          
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
       - run: 'sudo npm install -g newman-reporter-htmlfull'        
       - run: 'sudo npm install -g newman-reporter-htmlextra'                 
       - run: 'ls -la'
