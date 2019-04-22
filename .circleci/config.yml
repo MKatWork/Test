@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  TC_01:
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
       - image: circleci/node
@@ -21,7 +21,7 @@ jobs:
           path: ~/
           destination: build
       
-  test:
+  TC_02:
     docker:
       - image: circleci/node
     working_directory: ~/repo
@@ -42,8 +42,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
-      - test
+      - TC_01
+      - TC_02
 
 
 
