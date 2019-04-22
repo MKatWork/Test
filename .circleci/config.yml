@@ -43,7 +43,7 @@ jobs:
           path: ~/
           destination: build
     build2:
-    docker:
+      docker:
       # using custom image, see .circleci/images/primary/Dockerfile
       - image: circleci/node
     working_directory: ~/repo
@@ -82,4 +82,9 @@ jobs:
       - store_artifacts:
           path: ~/
           destination: build
-          
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+       - build
+       - build2
