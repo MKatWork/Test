@@ -1,0 +1,541 @@
+{
+	"info": {
+		"_postman_id": "f47a13fd-d3f1-46db-af96-4311cd02830d",
+		"name": "TC_09",
+		"description": "User Add vehicle successfully\n\n-Signup \n-Verfiy OTP\n-Login\n-Add C.C\n-Add vehicle\n-view vehicle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "vendor_signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d53c9790-23f2-45b7-8b38-e62a3acef005",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.globals.set(\"app_access_token\",jsonData.data.app_access_token);",
+							"pm.globals.set(\"email\",jsonData.data.vendor_details.email);",
+							"pm.globals.set(\"app_versioncode\",jsonData.data.vendor_details.app_versioncode);",
+							"pm.globals.set(\"phone_no\",jsonData.data.vendor_details.phone_no);",
+							"pm.globals.set(\"app_device_type\",jsonData.data.app_version.app_device_type);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "33a5048f-4727-4310-a26d-63e5cbfe5be2",
+						"exec": [
+							"const number = Math.floor((Math.random() * 100)+10);",
+							"var mobileNumber = '5511111'+number;",
+							"pm.environment.set(\"mobileNumber\",mobileNumber);",
+							"var customerEmail = \"TestUser_\"+number+\"@test.com\";",
+							"pm.environment.set(\"customerEmail\",customerEmail);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"Test\",\n  \"last_name\": \"User\",\n  \"phone_no\": \"{{mobileNumber}}\",\n  \"email\": \"{{customerEmail}}\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"2d382574485416f9c2f692034fbb74b8bd47b313652e22c380a99d5318680658\",\n  \"t_n_c_accepted\": \"1\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/vendor_signup",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"vendor_signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_otp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0b33897-a2ca-4a53-877d-d79f9017cc4d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.globals.set(\"OTP\",jsonData.data.OTP);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"app_access_token\":\"{{app_access_token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/get_otp",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"get_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify_otp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0b33897-a2ca-4a53-877d-d79f9017cc4d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"app_access_token\":\"{{app_access_token}}\",\n\"app_device_type\":\"{{app_device_type}}\",\n\"app_version\":\"{{app_versioncode}}\",\n\"otp\": \"{{OTP}}\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/verify_otp",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"verify_otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vendor_login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b31535e1-1591-43bf-a2c8-e3bf8b5bf3ba",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.globals.set(\"app_access_token\",jsonData.data.app_access_token);",
+							"pm.globals.set(\"email\",jsonData.data.vendor_details.email);",
+							"pm.globals.set(\"app_versioncode\",jsonData.data.vendor_details.app_versioncode);",
+							"pm.globals.set(\"phone_no\",jsonData.data.vendor_details.phone_no);",
+							"pm.globals.set(\"app_device_type\",jsonData.data.app_version.app_device_type);",
+							"pm.globals.set(\"user_id\",jsonData.data.vendor_details.user_id);",
+							"pm.globals.set(\"referral_code\",jsonData.data.vendor_details.referral_code);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"successfully\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"phone_no\":\"{{phone_no}}\",\n\"country_code\":\"+971\",\n\"password\":\"test1234\",\n\"app_version\":\"{{app_versioncode}}\",\n\"app_device_type\":\"{{app_device_type}}\",\n\"device_token\":\"{{app_access_token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/vendor_login?",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"vendor_login"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_vendor_vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d53c9790-23f2-45b7-8b38-e62a3acef005",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"app_device_type\": \"{{app_device_type}}\",\n\t\"app_version\": \"{{app_versioncode}}\",\n\t\"app_access_token\":\"{{app_access_token}}\",\n\t\"vehicle_name\": \"Rolls Royce\",\n\t\"color\": \"Black\",\n\t\"emirate\": \"Dubai\",\n\t\"plate_code\": \"A\",\n\t\"plate_number\": \"1112\",\n\t\"fuel_id\": \"2\",\n\t\"model_id\": \"001\",\n\t\"brand_id\": \"001\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/add_vendor_vehicles",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"add_vendor_vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_vendor_vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0677f35-a474-42de-969d-439e15173ebc",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.globals.set(\"vehicle_id\",jsonData.data[0].vehicle_id);",
+							"pm.globals.set(\"fuel_id\",jsonData.data[0].fuel_id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"app_device_type\": \"{{app_device_type}}\",\r\n\t\"app_version\": \"{{app_versioncode}}\",\r\n\t\"app_access_token\":\"{{app_access_token}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/get_vendor_vehicles",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"get_vendor_vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_vehicles_brand",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0677f35-a474-42de-969d-439e15173ebc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"app_device_type\":\"{{app_device_type}}\",\r\n\"app_version\":\"{{app_versioncode}}\",\r\n \"app_access_token\": \"{{app_access_token}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/get_vehicles_brand",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"get_vehicles_brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_vehicles_models",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0677f35-a474-42de-969d-439e15173ebc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"app_device_type\":\"{{app_device_type}}\",\r\n\"app_version\":\"{{app_versioncode}}\",\r\n \"app_access_token\": \"{{app_access_token}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/get_vehicles_models",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"get_vehicles_models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_fuel_types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d53c9790-23f2-45b7-8b38-e62a3acef005",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"app_device_type\": \"{{app_device_type}}\",\n\t\"app_version\": \"{{app_versioncode}}\",\n\t\"app_access_token\":\"{{app_access_token}}\",\n\t\"form_id\": \"2\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/get_fuel_types",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"get_fuel_types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Vendor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3c2c081-feca-44e9-9ac4-c99446416cf2",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"app_device_type\":\"{{app_device_type}}\",\n\"app_access_token\":\"{{app_access_token}}\"\n}"
+				},
+				"url": {
+					"raw": "{{startPoint}}/logout_vendor?",
+					"host": [
+						"{{startPoint}}"
+					],
+					"path": [
+						"logout_vendor"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "22ab1078-bf1e-4c27-918c-572f8bac7700",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2746cf20-6f13-44c4-a4fa-29d4377051be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

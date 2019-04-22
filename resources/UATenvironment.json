@@ -1,0 +1,28 @@
+{
+	"id": "3fdd8d59-6166-498e-9ef0-31bcc50083ee",
+	"name": "CAFU UAT",
+	"values": [
+		{
+			"key": "startPoint",
+			"value": "https://uat-api.cafu.app",
+			"description": {
+				"content": "",
+				"type": "text/plain"
+			},
+			"enabled": true
+		},
+		{
+			"key": "customerEmail",
+			"value": "TestUser_55@test.com",
+			"enabled": true
+		},
+		{
+			"key": "mobileNumber",
+			"value": "551111155",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-04-22T07:17:11.110Z",
+	"_postman_exported_using": "Postman/7.0.6"
+}
