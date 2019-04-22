@@ -23,6 +23,7 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
+							"",
 							"pm.test(\"Body matches string\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"Successful\");",
 							"});"
@@ -35,8 +36,8 @@
 					"script": {
 						"id": "33a5048f-4727-4310-a26d-63e5cbfe5be2",
 						"exec": [
-							"const number = Math.floor((Math.random() * 100)+10);",
-							"var mobileNumber = '5511111'+number;",
+							"const number = Math.floor((Math.random() * 1000)+10);",
+							"var mobileNumber = '991111'+number;",
 							"pm.environment.set(\"mobileNumber\",mobileNumber);",
 							"var customerEmail = \"TestUser_\"+number+\"@test.com\";",
 							"pm.environment.set(\"customerEmail\",customerEmail);"
