@@ -15,7 +15,7 @@ jobs:
       - run: 'sudo npm install -g newman-reporter-htmlextra'                 
       - run: 'ls -la'
       #API Testing TC 2
-      - run: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - run: 'newman run ./resources/TC_13.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
          # Save artifacts
       - store_artifacts:
           path: ~/
