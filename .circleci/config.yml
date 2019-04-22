@@ -8,8 +8,7 @@ jobs:
 
     steps:
       - checkout
-      - run: 
-        command: 'sudo npm i -g npmignore'
+      - run: 'sudo npm i -g npmignore'
   test:
     docker:
       - image: circleci/node
