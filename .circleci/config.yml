@@ -10,33 +10,33 @@ jobs:
       - checkout
       - run: 
         name: NPM Ignore
-          command: 'sudo npm i -g npmignore'
+          command: sudo npm i -g npmignore
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: Install Newman
-          command: 'sudo npm install -g newman'
+          command: sudo npm install -g newman
           #HTML Report
       - run:
           name: Install html
-          command: 'sudo npm install -g newman-reporter-html'    
+          command: sudo npm install -g newman-reporter-html 
           
       - run:
           name: Install htmlfull
-          command: 'sudo npm install -g newman-reporter-htmlfull'        
+          command: sudo npm install -g newman-reporter-htmlfull       
       - run:
           name: Install htmlextra
-          command: 'sudo npm install -g newman-reporter-htmlextra'          
+          command: sudo npm install -g newman-reporter-htmlextra        
        
       - run:
           name: Working Dir
-          command: 'ls -la'
+          command: ls -la
 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: API Testing TC 1
           # command: 'newman run ./test_json.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
           #command: 'newman run /home/circleci/repo/collection.json --environment /home/circleci/repo/env.json'
-          command: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+          command: newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/
    
          # Save artifacts
       - store_artifacts:
@@ -49,33 +49,33 @@ jobs:
       - checkout
       - run: 
         name: NPM Ignore
-          command: 'sudo npm i -g npmignore'
+          command: sudo npm i -g npmignore
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: Install Newman
-          command: 'sudo npm install -g newman'
+          command: sudo npm install -g newman
           #HTML Report
       - run:
           name: Install html
-          command: 'sudo npm install -g newman-reporter-html'    
+          command: sudo npm install -g newman-reporter-html   
           
       - run:
           name: Install htmlfull
-          command: 'sudo npm install -g newman-reporter-htmlfull'        
+          command: sudo npm install -g newman-reporter-htmlfull      
       - run:
           name: Install htmlextra
-          command: 'sudo npm install -g newman-reporter-htmlextra'          
+          command: sudo npm install -g newman-reporter-htmlextra          
        
       - run:
           name: Working Dir
-          command: 'ls -la'
+          command: ls -la
 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
           name: API Testing TC 1
           # command: 'newman run ./test_json.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
           #command: 'newman run /home/circleci/repo/collection.json --environment /home/circleci/repo/env.json'
-          command: 'newman run ./resources/TC_02.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+          command: newman run ./resources/TC_02.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/
    
          # Save artifacts
       - store_artifacts:
