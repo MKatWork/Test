@@ -36,7 +36,7 @@ jobs:
           name: API Testing for Smoke Suite
           # command: 'newman run ./test_json.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
           #command: 'newman run /home/circleci/repo/collection.json --environment /home/circleci/repo/env.json'
-          command: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json
+          command: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json'
     
 
          # Save artifacts
