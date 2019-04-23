@@ -62,3 +62,4 @@ workflows:
     jobs:
       - TC_01
       - TC_02
+      - TC_03
