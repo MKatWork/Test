@@ -36,13 +36,7 @@
 					"script": {
 						"id": "33a5048f-4727-4310-a26d-63e5cbfe5be2",
 						"exec": [
-							"const temp1=1;",
-							"const temp2 = Math.floor((Math.random() * 10000)+10);",
-							"const number=temp1+temp2;",
-							"var mobileNumber = '991111'+number;",
-							"pm.environment.set(\"mobileNumber\",mobileNumber);",
-							"var customerEmail = number+\"@test.com\";",
-							"pm.environment.set(\"customerEmail\",customerEmail);"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -60,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"first_name\": \"Test\",\n  \"last_name\": \"User\",\n  \"phone_no\": \"{{mobileNumber}}\",\n  \"email\": \"TestUser_{{customerEmail}}\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"2d382574485416f9c2f692034fbb74b8bd47b313652e22c380a99d5318680658\",\n  \"t_n_c_accepted\": \"1\"\n}"
+					"raw": "{\n  \"first_name\": \"Test\",\n  \"last_name\": \"User\",\n  \"phone_no\": \"{{mobileNumber}}\",\n  \"email\": \"{{customerEmail}}\",\n  \"password\": \"test1234\",\n  \"country_code\": \"+971\",\n  \"app_device_type\": \"2\",\n  \"app_version\": \"100\",\n  \"device_token\": \"2d382574485416f9c2f692034fbb74b8bd47b313652e22c380a99d5318680658\",\n  \"t_n_c_accepted\": \"1\"\n}"
 				},
 				"url": {
 					"raw": "{{startPoint}}/vendor_signup",
@@ -643,6 +637,34 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c73589b6-5f47-4515-a9ea-6d3ce1a365fa",
+				"type": "text/javascript",
+				"exec": [
+					"const temp1=1;",
+					"const temp2 = Math.floor((Math.random() * 10000)+10);",
+					"const number=temp1+temp2;",
+					"var mobileNumber = '991111'+number;",
+					"pm.environment.set(\"mobileNumber\",mobileNumber);",
+					"var customerEmail = number+\"@test.com\";",
+					"pm.environment.set(\"customerEmail\",customerEmail);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c35ab111-5b4f-4158-8151-ad89155bcd3c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

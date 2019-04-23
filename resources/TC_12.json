@@ -35,11 +35,7 @@
 					"script": {
 						"id": "33a5048f-4727-4310-a26d-63e5cbfe5be2",
 						"exec": [
-							"const number = Math.floor((Math.random() * 100)+10);",
-							"var mobileNumber = '5511111'+number;",
-							"pm.environment.set(\"mobileNumber\",mobileNumber);",
-							"var customerEmail = \"TestUser_\"+number+\"@test.com\";",
-							"pm.environment.set(\"customerEmail\",customerEmail);"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -679,6 +675,34 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6131737c-d36e-4a1c-bd3a-bc5de065ebe9",
+				"type": "text/javascript",
+				"exec": [
+					"const temp1=1;",
+					"const temp2 = Math.floor((Math.random() * 10000)+10);",
+					"const number=temp1+temp2;",
+					"var mobileNumber = '991111'+number;",
+					"pm.environment.set(\"mobileNumber\",mobileNumber);",
+					"var customerEmail = number+\"@test.com\";",
+					"pm.environment.set(\"customerEmail\",customerEmail);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d71f4619-e9a7-48bd-ad5a-f3063398f05c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

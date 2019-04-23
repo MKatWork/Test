@@ -35,11 +35,7 @@
 					"script": {
 						"id": "33a5048f-4727-4310-a26d-63e5cbfe5be2",
 						"exec": [
-							"const number = Math.floor((Math.random() * 100)+10);",
-							"var mobileNumber = '5511111'+number;",
-							"pm.environment.set(\"mobileNumber\",mobileNumber);",
-							"var customerEmail = \"TestUser_\"+number+\"@test.com\";",
-							"pm.environment.set(\"customerEmail\",customerEmail);"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -389,7 +385,13 @@
 				"id": "fb9b0471-4a16-42ad-8e1b-1cf83318478c",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"const temp1=1;",
+					"const temp2 = Math.floor((Math.random() * 10000)+10);",
+					"const number=temp1+temp2;",
+					"var mobileNumber = '991111'+number;",
+					"pm.environment.set(\"mobileNumber\",mobileNumber);",
+					"var customerEmail = number+\"@test.com\";",
+					"pm.environment.set(\"customerEmail\",customerEmail);"
 				]
 			}
 		},

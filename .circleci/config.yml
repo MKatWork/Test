@@ -15,7 +15,7 @@ jobs:
       - run: 'sudo npm install -g newman-reporter-htmlextra'                 
       - run: 'ls -la'
       #API Testing TC 2
-      - run: 'newman run ./resources/TC_13.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - run: 'newman run ./resources/TC_01.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
          # Save artifacts
       - store_artifacts:
           path: ~/
@@ -33,11 +33,181 @@ jobs:
       - run: 'sudo npm install -g newman-reporter-htmlextra'                 
       - run: 'ls -la'
       #API Testing TC 2
-      - run: 'newman run ./resources/TC_13.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - run: 'newman run ./resources/TC_02.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
       - store_artifacts:
           path: ~/
           destination: build
   TC_03:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_03.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_04:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_04.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_05:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_05.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_06:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_06.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_07:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_07.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_08:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_08.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_09:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_09.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_10:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_10.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_11:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_11.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_12:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 'sudo npm i -g npmignore'
+      - run: 'sudo npm install -g newman'
+      - run: 'sudo npm install -g newman-reporter-html' 
+      - run: 'sudo npm install -g newman-reporter-htmlfull'        
+      - run: 'sudo npm install -g newman-reporter-htmlextra'                 
+      - run: 'ls -la'
+      #API Testing TC 2
+      - run: 'newman run ./resources/TC_12.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
+      - store_artifacts:
+          path: ~/
+          destination: build
+  TC_13:
     docker:
       - image: circleci/node
     working_directory: ~/repo
@@ -61,3 +231,13 @@ workflows:
       - TC_01
       - TC_02
       - TC_03
+      - TC_04
+      - TC_05
+      - TC_06
+      - TC_07
+      - TC_08
+      - TC_09
+      - TC_10
+      - TC_11
+      - TC_12
+      - TC_13
