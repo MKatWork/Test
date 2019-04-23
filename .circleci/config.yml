@@ -19,7 +19,7 @@ jobs:
          # Save artifacts
       - store_artifacts:
           path: ~/
-          destination: build    
+          destination: build
   TC_02:
     docker:
       - image: circleci/node
@@ -36,8 +36,8 @@ jobs:
       - run: 'newman run ./resources/TC_13.json --environment ./resources/UATenvironment.json -r cli,htmlextra --reporter-htmlextra-export ./results/'
       - store_artifacts:
           path: ~/
-          destination: build          
- TC_03:
+          destination: build
+  TC_03:
     docker:
       - image: circleci/node
     working_directory: ~/repo
